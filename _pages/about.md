@@ -2,25 +2,35 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: 
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: profile_picture.jpeg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>
+    <i class="far fa-envelope"></i> ljhnick@g.ucla.edu
+    </p>
+    <p>
+    <a class="meta" href="https://scholar.google.com/citations?user=NktGUFUAAAAJ&hl=en"><i class="fas fa-user-graduate"></i> Google Scholar</a>
+    </p>
+    <p>
+    <a class="meta" href="assets/pdf/resume.pdf"><i class="far fa-file"></i> Curriculum Vitae </a>
+    </p>
+    <p>
+    </p>
 
-news: true  # includes a list of news items
-latest_posts: true  # includes a list of the newest posts
+news: false  # includes a list of news items
+latest_posts: false  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true  # includes social icons at the bottom of the page
+social: false  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a final year Ph.D. candidate at [UCLA HCI Research](https://hci.ucla.edu/) working with Prof. [Xiang 'Anthony' Chen](https://hci.prof/).
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+My research area focuses on building **AI-powered interactive systems**. Specifically, I build systems to augment human capabilities in everyday activities, which include: (1) predicting users' intent in interaction with egocentric data
+and (2) providing proactive assistance based on current context and historical memory.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+During my Ph.D., I interned at [Meta Reality Lab](https://about.facebook.com/realitylabs/), [Adobe Research](https://research.adobe.com/) and [Palo Alto Research Center (PARC)](https://www.parc.com/). I was also a visiting Ph.D. student at [University of Tokyo](https://www.u-tokyo.ac.jp/en/) working with [Dr. Takeo Igarashi](https://www-ui.is.s.u-tokyo.ac.jp/~takeo/index.html). Prior to that, I received my Bachelor of Engineering from [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/).
+
