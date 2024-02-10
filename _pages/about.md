@@ -29,8 +29,10 @@ social: false  # includes social icons at the bottom of the page
 
 I am a final year Ph.D. candidate at [UCLA HCI Research](https://hci.ucla.edu/) working with Prof. [Xiang 'Anthony' Chen](https://hci.prof/).
 
-My research area focuses on building **AI-powered interactive systems**. Specifically, I build systems to augment human capabilities in everyday activities, which include: (1) predicting users' intent in interaction with egocentric data
-and (2) providing proactive assistance based on current context and historical memory.
+My research area focuses on human-AI interaction with a focus on **designing studies to understand user needs** and **building AI-powered interactive systems** for novel real-world tasks. I am particularly interested in AI-assisted tasks using personal egocentric data.
+This includes: (1) predicting user intents through interactions with AR glasses, and (2) performing natural language queries on personal egocentric videos. 
+<!-- I build systems to augment human capabilities in everyday activities, which include: (1) predicting users' intent in interaction with egocentric data
+and (2) providing proactive assistance based on current context and historical memory. -->
 
 During my Ph.D., I interned at [Meta Reality Lab](https://about.facebook.com/realitylabs/), [Adobe Research](https://research.adobe.com/) and [Palo Alto Research Center (PARC)](https://www.parc.com/). I was also a visiting Ph.D. student at [University of Tokyo](https://www.u-tokyo.ac.jp/en/) working with [Dr. Takeo Igarashi](https://www-ui.is.s.u-tokyo.ac.jp/~takeo/index.html). Prior to that, I received my Bachelor of Engineering from [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/).
 
