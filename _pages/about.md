@@ -30,7 +30,7 @@ social: false  # includes social icons at the bottom of the page
 I am a final year Ph.D. candidate at [UCLA HCI Research](https://hci.ucla.edu/) working with Prof. [Xiang 'Anthony' Chen](https://hci.prof/).
 
 My research area focuses on human-AI interaction with a focus on **designing studies to understand user needs** and **building AI-powered interactive systems** for novel real-world tasks. I am particularly interested in AI-assisted tasks using personal egocentric data.
-This includes: (1) predicting user intents through interactions with AR glasses, and (2) performing natural language queries on personal egocentric videos. 
+This includes: (1) embodied AI assistance for pervasive AR, and (2) long-form egocentric video understanding. 
 <!-- I build systems to augment human capabilities in everyday activities, which include: (1) predicting users' intent in interaction with egocentric data
 and (2) providing proactive assistance based on current context and historical memory. -->
 
