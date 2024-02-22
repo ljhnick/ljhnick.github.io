@@ -32,3 +32,11 @@
 "planck":
   - firstname: ["Max"]
     url: https://en.wikipedia.org/wiki/Max_Planck
+
+"bruce":
+  - firstname: ["Xingyu", "Xingyu Bruce"]
+    url: https://liubruce.me/
+
+"anthony":
+  - firstname: ["Anthony", "Xiang"]
+    url: https://hci.prof/
