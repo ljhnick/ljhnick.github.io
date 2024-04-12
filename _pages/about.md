@@ -29,7 +29,7 @@ social: false  # includes social icons at the bottom of the page
 
 I am a Ph.D. candidate at [UCLA HCI Research](https://hci.ucla.edu/) working with Prof. [Xiang 'Anthony' Chen](https://hci.prof/).
 
-My research area lies in **Egocentric Contextual AI**, focusing on **Human-AI Interaction** for **Pervasive Augmented Reality (AR)**. 
+My research area lies in **Human-AI Interaction**, focusing on **Egocentric Multimodal AI Agents**. 
 Specifically, I build interactive systems to provide personalized assistance for individual users. 
 Such systems are powered by cutting-edge AI models (e.g., LLMs, VLMs) and are enhanced by incorporating:
 (1) external and task-specific knowledge, sourced through both crowdsourcing and targeted data collection, and
