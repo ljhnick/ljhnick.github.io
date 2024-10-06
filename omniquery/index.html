@@ -127,11 +127,8 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video>
+      <img src="static/images/teaser.jpg" alt="Banner Image" id="tree" height="100%">
+
       <h2 class="subtitle has-text-centered">
         OmniQuery enables <strong>free-form question answering</strong> on personal memories (i.e., private data in albums) with RAG. Specifically, it applies <b>contextual data augmentation </b>(<b>taxonomy-based</b>) to enhance the retrieval accuracy, and uses LLMs to generate answers based on the retrieved memory instances.
       </h2>
@@ -141,7 +138,7 @@
 <!-- End teaser video -->
 
 <!-- Paper abstract -->
-<section class="section hero is-light">
+<!-- <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -154,8 +151,78 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!-- End paper abstract -->
+
+
+<section class="hero teaser"></section>
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3">Exemplar Personal Questions</h2>
+      <div class="content has-text-justified">
+        <p>
+          OmniQuery enables answering questions that require <strong>multi-hop searching and reasoning</strong> over personal memories. Here are some examples of the questions that OmniQuery can answer:
+        </p>
+      </div>
+      
+      <h3 class="subtitle is-4">Look Up and Locate</h3>
+      <figure>
+        <img src="static/images/example_lookup.png" alt="Banner Image" id="tree" height="100%">
+        <figcaption class="has-text-centered">Example 1: Look up the memories of a friend's wedding and locate information about the venue; Example 2: Find the last memory of vet visit.</figcaption>
+      </figure>
+      
+      <h3 class="subtitle is-4">Exploratary Search</h3>
+      <figure></figure>
+        <img src="static/images/example_explore.png" alt="Banner Image" id="tree" height="100%">
+        <figcaption class="has-text-centered">Example 3: Recall the travel experience.</figcaption>
+      </figure>
+
+      <h3 class="subtitle is-4">Summarize and Compare</h3>
+      <figure>
+        <img src="static/images/example_4.png" alt="Banner Image" id="tree" height="100%">
+        <figcaption class="has-text-centered">Example 4: Summarize and compare workout frequency.</figcaption>
+      </figure>
+
+      <!-- <h3 class="subtitle is-4">Open-ended and Subjective</h3> -->
+
+    </div>
+  </div>
+</section>
+
+<section class="hero"></section>
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3">Implementation</h2>
+      <div class="content has-text-justified">
+        <p>
+          OmniQuery leverages Retrieval-Augmented Generation (RAG) to answer complex personal questions on large amount of personal memory.
+        </p>
+        <img src="static/images/qa_system.png" alt="Banner Image" id="tree" height="100%">
+      </div>
+      
+      <div class="content has-text-justified"></div>
+        <p>
+          Specifically, the accurate retrieval of relevant memories is crucial for the performance of the system. To this end, we propose a novel taxonomy-based contextual data augmentation method to enhance the retrieval accuracy. The taxonomy is generated based on a one-month diary study, which collects realistic user queries and the necessary contextual information for integrating with captured memories. The taxonomy is then used to augment the captured memories with contextual information, which is used to retrieve relevant memories. The retrieved memories are then used to generate answers to the user queries using a large language model (LLM). For more details, please refer to our <a href="https://arxiv.org/abs/2409.08250">paper</a>.
+        </p>
+        <img src="static/images/contextual_aug.png" alt="Banner Image" id="tree" height="100%">
+      </div>
+
+      <!-- <h3 class="subtitle is-4">Open-ended and Subjective</h3> -->
+
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Examples</h2>
+        
+      </div>
+    </div>
+  </div>
+</section> -->
 
 
 <!-- Image carousel -->
