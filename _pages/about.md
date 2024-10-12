@@ -27,7 +27,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false  # includes social icons at the bottom of the page
 ---
 
-I am a researcher in HCI and a software engineer at [Apple](https://machinelearning.apple.com/research).
+I am a researcher in HCI and a software engineer at [Apple ](https://machinelearning.apple.com/research).
 <!-- I am a Ph.D. candidate at [UCLA HCI Research](https://hci.ucla.edu/) working with Prof. [Xiang 'Anthony' Chen](https://hci.prof/). -->
 
 My research area lies in **Human-AI Interaction**, focusing on **Wearable AI Assistance**. 
@@ -55,6 +55,6 @@ and (2) providing proactive assistance based on current context and historical m
 I earned my Ph.D. from UCLA in HCI under the supervision of Prof. [Xiang 'Anthony' Chen](https://hci.prof/) and B.E. from [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/).
 
 
-I previously interned at [Meta Reality Lab](https://about.facebook.com/realitylabs/), [Adobe Research](https://research.adobe.com/) and [Palo Alto Research Center (PARC)](https://www.parc.com/). I was also a visiting Ph.D. student at [University of Tokyo](https://www.u-tokyo.ac.jp/en/) working with [Dr. Takeo Igarashi](https://www-ui.is.s.u-tokyo.ac.jp/~takeo/index.html).
+I interned at [Meta Reality Lab](https://about.facebook.com/realitylabs/), [Adobe Research](https://research.adobe.com/) and [Palo Alto Research Center (PARC)](https://www.parc.com/). I was also a visiting Ph.D. student at [University of Tokyo](https://www.u-tokyo.ac.jp/en/) working with [Dr. Takeo Igarashi](https://www-ui.is.s.u-tokyo.ac.jp/~takeo/index.html).
 <!-- Prior to that, I received my Bachelor of Engineering from [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). -->
 
