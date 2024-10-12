@@ -27,7 +27,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false  # includes social icons at the bottom of the page
 ---
 
-I am a researcher in HCI and a software engineer at [Apple ](https://machinelearning.apple.com/research).
+I am a researcher in HCI and a software engineer at [Apple](https://machinelearning.apple.com/research).
 <!-- I am a Ph.D. candidate at [UCLA HCI Research](https://hci.ucla.edu/) working with Prof. [Xiang 'Anthony' Chen](https://hci.prof/). -->
 
 My research area lies in **Human-AI Interaction**, focusing on **Wearable AI Assistance**. 
