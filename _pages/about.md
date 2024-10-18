@@ -58,3 +58,5 @@ I earned my Ph.D. from UCLA in HCI under the supervision of Prof. [Xiang 'Anthon
 I interned at [Meta Reality Lab](https://about.facebook.com/realitylabs/), [Adobe Research](https://research.adobe.com/) and [Palo Alto Research Center (PARC)](https://www.parc.com/). I was also a visiting Ph.D. student at [University of Tokyo](https://www.u-tokyo.ac.jp/en/) working with [Dr. Takeo Igarashi](https://www-ui.is.s.u-tokyo.ac.jp/~takeo/index.html).
 <!-- Prior to that, I received my Bachelor of Engineering from [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). -->
 
+📢 **I am actively seeking a full-time industrial position.** If you know of any opportunity, please feel free to reach out!
+
