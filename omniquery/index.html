@@ -9,6 +9,39 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-X8LTNRG2GY');
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.publication-links a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          gtag('event', 'click_project_link', {
+            'link_url': this.href,
+            'link_text': this.textContent.trim(),
+            'project': 'OmniQuery'
+          });
+        });
+      });
+
+      var video = document.querySelector('iframe[src*="youtube"]');
+      if (video) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              gtag('event', 'view_video_section', { 'project': 'OmniQuery' });
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.5 });
+        observer.observe(video);
+      }
+
+      var bibtex = document.querySelector('#BibTeX pre code');
+      if (bibtex) {
+        bibtex.addEventListener('click', function() {
+          navigator.clipboard.writeText(this.textContent);
+          gtag('event', 'copy_bibtex', { 'project': 'OmniQuery' });
+        });
+      }
+    });
   </script>
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
