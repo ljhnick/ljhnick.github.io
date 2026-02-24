@@ -3,31 +3,208 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ window.dataLayer.push(arguments); }
+    function gtag() { window.dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', '{{ site.google_analytics }}');
 
     document.addEventListener('DOMContentLoaded', function() {
+      var pagePath = window.location.pathname;
+      var pageTitle = document.title;
+      var trackedScrollMilestones = {};
+      var scrollMilestones = [25, 50, 75, 100];
+
+      function safeText(element, fallback) {
+        if (!element) return fallback || '';
+        return (element.textContent || fallback || '').trim();
+      }
+
+      function getPublicationTitle(element) {
+        var publication = element.closest('div[id]');
+        if (!publication) return '';
+        var titleNode = publication.querySelector('.title');
+        return safeText(titleNode, publication.id || '');
+      }
+
+      function trackEvent(eventName, params) {
+        gtag('event', eventName, Object.assign({
+          page_path: pagePath,
+          page_title: pageTitle
+        }, params || {}));
+      }
+
+      // Existing external link tracking (preserved).
       document.querySelectorAll('a[href^="http"]').forEach(function(link) {
         if (link.hostname !== window.location.hostname) {
           link.addEventListener('click', function() {
-            gtag('event', 'click_external_link', {
-              'link_url': this.href,
-              'link_text': this.textContent.trim(),
-              'page_path': window.location.pathname
+            trackEvent('click_external_link', {
+              link_url: this.href,
+              link_text: safeText(this, '(external_link)')
             });
           });
         }
       });
 
+      // Existing social link tracking (preserved).
       document.querySelectorAll('.news a, .social a').forEach(function(link) {
         link.addEventListener('click', function() {
-          gtag('event', 'click_social_link', {
-            'link_url': this.href,
-            'link_text': this.textContent.trim()
+          trackEvent('click_social_link', {
+            link_url: this.href,
+            link_text: safeText(this, '(social_link)')
           });
         });
       });
+
+      // Navbar + dropdown tracking.
+      document.querySelectorAll('.navbar .nav-link, .navbar .dropdown-item').forEach(function(link) {
+        link.addEventListener('click', function() {
+          trackEvent('click_nav_item', {
+            nav_text: safeText(this, '(nav_item)'),
+            nav_href: this.href || ''
+          });
+        });
+      });
+
+      // Footer link tracking.
+      document.querySelectorAll('footer a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          trackEvent('click_footer_link', {
+            link_text: safeText(this, '(footer_link)'),
+            link_url: this.href || ''
+          });
+        });
+      });
+
+      // Publication button tracking (PDF, arXiv, Code, Video, Website, etc.).
+      document.querySelectorAll('.links .btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+          var buttonLabel = safeText(this, '(publication_button)');
+          var publicationTitle = getPublicationTitle(this);
+          trackEvent('click_publication_link', {
+            button_type: buttonLabel.toLowerCase(),
+            button_label: buttonLabel,
+            link_url: this.href || '',
+            paper_title: publicationTitle
+          });
+        });
+      });
+
+      // Publication abstract / bibtex toggles.
+      document.querySelectorAll('a.abstract.btn, a.bibtex.btn').forEach(function(toggleButton) {
+        toggleButton.addEventListener('click', function() {
+          var toggleType = this.classList.contains('abstract') ? 'abstract' : 'bibtex';
+          trackEvent('toggle_publication_details', {
+            detail_type: toggleType,
+            action_text: safeText(this, toggleType),
+            paper_title: getPublicationTitle(this)
+          });
+        });
+      });
+
+      // More authors expansion in publication list.
+      document.querySelectorAll('.more-authors').forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+          trackEvent('expand_more_authors', {
+            paper_title: getPublicationTitle(this)
+          });
+        });
+      });
+
+      // Project card clicks.
+      document.querySelectorAll('.grid-item > a, .card-item > a').forEach(function(projectLink) {
+        projectLink.addEventListener('click', function() {
+          var card = this.querySelector('.card-title');
+          trackEvent('click_project_card', {
+            project_title: safeText(card, safeText(this, '(project_card)')),
+            project_url: this.href || ''
+          });
+        });
+      });
+
+      // PDF downloads (e.g., resume/CV and publication PDFs).
+      document.querySelectorAll('a[href$=".pdf"], a[href*=".pdf?"]').forEach(function(pdfLink) {
+        pdfLink.addEventListener('click', function() {
+          trackEvent('download_pdf', {
+            file_url: this.href || '',
+            file_name: (this.href || '').split('/').pop().split('?')[0],
+            link_text: safeText(this, '(pdf_link)')
+          });
+        });
+      });
+
+      // Email click tracking.
+      document.querySelectorAll('a[href^="mailto:"]').forEach(function(emailLink) {
+        emailLink.addEventListener('click', function() {
+          trackEvent('click_email_link', {
+            email_target: (this.href || '').replace('mailto:', ''),
+            link_text: safeText(this, '(email_link)')
+          });
+        });
+      });
+
+      // Academic profile tracking (in addition to general external link events).
+      document.querySelectorAll('a[href]').forEach(function(link) {
+        link.addEventListener('click', function() {
+          var href = this.href || '';
+          var lowerHref = href.toLowerCase();
+          if (
+            lowerHref.indexOf('scholar.google') !== -1 ||
+            lowerHref.indexOf('orcid.org') !== -1 ||
+            lowerHref.indexOf('researchgate.net') !== -1 ||
+            lowerHref.indexOf('dblp.org') !== -1 ||
+            lowerHref.indexOf('semanticscholar.org') !== -1
+          ) {
+            trackEvent('click_academic_profile', {
+              profile_url: href,
+              link_text: safeText(this, '(academic_profile)')
+            });
+          }
+        });
+      });
+
+      // Dark mode toggle tracking.
+      var lightToggle = document.getElementById('light-toggle');
+      if (lightToggle) {
+        lightToggle.addEventListener('click', function() {
+          var currentTheme = localStorage.getItem('theme') || document.documentElement.getAttribute('data-theme') || 'light';
+          window.setTimeout(function() {
+            var nextTheme = localStorage.getItem('theme') || document.documentElement.getAttribute('data-theme') || 'light';
+            trackEvent('toggle_theme', {
+              previous_theme: currentTheme,
+              next_theme: nextTheme
+            });
+          }, 50);
+        });
+      }
+
+      // Scroll depth tracking at 25/50/75/100 percent, once per milestone.
+      function getScrollPercent() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var docHeight = Math.max(
+          document.body.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.clientHeight,
+          document.documentElement.scrollHeight,
+          document.documentElement.offsetHeight
+        );
+        var viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+        var scrollable = docHeight - viewportHeight;
+        if (scrollable <= 0) return 100;
+        return Math.min(100, Math.round((scrollTop / scrollable) * 100));
+      }
+
+      function maybeTrackScrollDepth() {
+        var percent = getScrollPercent();
+        scrollMilestones.forEach(function(milestone) {
+          if (percent >= milestone && !trackedScrollMilestones[milestone]) {
+            trackedScrollMilestones[milestone] = true;
+            trackEvent('scroll_depth', { percent_scrolled: milestone });
+          }
+        });
+      }
+
+      // Track initial state for short pages and subsequent scrolling.
+      maybeTrackScrollDepth();
+      window.addEventListener('scroll', maybeTrackScrollDepth, { passive: true });
     });
   </script>
 {%- endif -%}
