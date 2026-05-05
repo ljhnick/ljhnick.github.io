@@ -1,111 +1,48 @@
-# name: deploy
-
-# on:
-#   push:
-#     branches:
-#       - master
-#       - main
-#   pull_request:
-#     branches:
-#       - master
-#       - main
-#   workflow_dispatch:
-
-# permissions:
-#   contents: write
-
-# jobs:
-#   deploy:
-#     # available images: https://github.com/actions/runner-images#available-images
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Checkout 🛎️
-#       uses: actions/checkout@v3
-#     - name: Setup Ruby
-#       uses: ruby/setup-ruby@v1
-#       with:
-#         ruby-version: '3.2.2'
-#         bundler-cache: true
-#     - name: Update _config.yml ⚙️
-#       uses: fjogeleit/yaml-update-action@v0.13.1
-#       with:
-#         commitChange: false
-#         valueFile: '_config.yml'
-#         propertyPath: 'giscus.repo'
-#         value: ${{ github.repository }}
-#     - name: Install and Build 🔧
-#       run: |
-#         pip3 install --upgrade jupyter
-#         npm install -g mermaid.cli
-#         npm install -g purgecss
-#         export JEKYLL_ENV=production
-#         bundle exec jekyll build --lsi
-#         purgecss -c purgecss.config.js
-#     - name: Deploy 🚀
-#       if: github.event_name != 'pull_request'
-#       uses: JamesIves/github-pages-deploy-action@v4
-#       with:
-#         folder: _site
-
-name: deploy
+name: Deploy site to GitHub Pages
 
 on:
   push:
-    branches:
-      - master
-      - main
-  pull_request:
-    branches:
-      - master
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout 🛎️
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.2.2'
-        bundler-cache: true
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
-    - name: Update _config.yml ⚙️
-      uses: fjogeleit/yaml-update-action@v0.13.1
-      with:
-        commitChange: false
-        valueFile: '_config.yml'
-        propertyPath: 'giscus.repo'
-        value: ${{ github.repository }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
 
-    - name: Set up Python environment
-      run: |
-        python3 -m venv .venv
-        source .venv/bin/activate
-        pip install --upgrade pip
-        pip install --upgrade jupyter
+      - run: pnpm install --frozen-lockfile=false
 
-    - name: Install Node.js dependencies
-      run: |
-        npm install -g mermaid.cli
-        npm install -g purgecss
+      - run: pnpm build
 
-    - name: Install and Build 🔧
-      run: |
-        source .venv/bin/activate
-        export JEKYLL_ENV=production
-        bundle exec jekyll build --lsi
-        purgecss -c purgecss.config.js
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
-    - name: Deploy 🚀
-      if: github.event_name != 'pull_request'
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        folder: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

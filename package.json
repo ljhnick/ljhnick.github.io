@@ -1,11 +1,17 @@
 {
-  "name": "ljhnick.github.io",
+  "name": "ljhnick-site",
+  "type": "module",
   "version": "1.0.0",
-  "description": "<div align=\"center\">",
-  "main": "purgecss.config.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.4",
+    "astro": "^5.1.5",
+    "tailwindcss": "^3.4.17"
+  }
 }

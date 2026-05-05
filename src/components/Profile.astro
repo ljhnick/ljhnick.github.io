@@ -1,0 +1,30 @@
+---
+import { SITE } from "../consts";
+---
+
+<div class="flex items-center gap-4 mb-8">
+  <img
+    src="/assets/img/profile_picture.jpeg"
+    alt="Jiahao Nick Li"
+    class="w-16 h-16 rounded-full object-cover shrink-0"
+    loading="eager"
+    decoding="async"
+  />
+  <div class="min-w-0">
+    <h1 class="text-xl font-medium text-[color:var(--fg)] leading-tight">
+      Jiahao Nick Li
+    </h1>
+    <ul
+      class="mt-1 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-sm muted"
+    >
+      <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+      <li aria-hidden="true">·</li>
+      <li><a href={SITE.scholar} target="_blank" rel="noopener">scholar</a></li>
+      <li aria-hidden="true">·</li>
+      <li>
+        <a href={SITE.cvPdf}>cv</a>
+        <span class="ml-1 text-xs">(updated Jan 2025)</span>
+      </li>
+    </ul>
+  </div>
+</div>

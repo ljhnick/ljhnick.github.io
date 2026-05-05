@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from "astro:content";
+import AuthorList from "./AuthorList.astro";
+
+interface Props {
+  pub: CollectionEntry<"publications">;
+}
+
+const { pub } = Astro.props;
+const d = pub.data;
+
+const links: { label: string; href: string }[] = [];
+if (d.pdf) links.push({ label: "pdf", href: d.pdf });
+if (d.arxiv) links.push({ label: "arxiv", href: d.arxiv });
+if (d.doi) links.push({ label: "doi", href: d.doi });
+if (d.website) links.push({ label: "website", href: d.website });
+if (d.video) links.push({ label: "video", href: d.video });
+if (d.poster) links.push({ label: "poster", href: d.poster });
+if (d.code) links.push({ label: "code", href: d.code });
+---
+
+<article class="grid grid-cols-[64px_1fr] gap-4 py-3">
+  <div>
+    {
+      d.preview && (
+        <img
+          src={d.preview}
+          alt=""
+          class="w-full h-auto rounded object-cover aspect-square bg-[color:var(--bg-soft)]"
+          loading="lazy"
+          decoding="async"
+        />
+      )
+    }
+  </div>
+  <div class="min-w-0">
+    <h3 class="text-[15px] font-medium leading-snug text-[color:var(--fg)]">
+      {
+        d.website && d.website.startsWith("/") ? (
+          <a href={d.website}>{d.title}</a>
+        ) : d.pdf ? (
+          <a href={d.pdf}>{d.title}</a>
+        ) : (
+          d.title
+        )
+      }
+    </h3>
+    <div class="mt-0.5">
+      <AuthorList authors={d.authors} />
+    </div>
+    <div class="mt-0.5 text-sm muted">
+      {d.venue}{d.year ? `, ${d.year}` : ""}
+      {d.award && <span class="ml-2 italic">{d.award}</span>}
+    </div>
+    {
+      links.length > 0 && (
+        <div class="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-xs muted">
+          {links.map((l) => (
+            <a
+              href={l.href}
+              target={l.href.startsWith("http") ? "_blank" : undefined}
+              rel={l.href.startsWith("http") ? "noopener" : undefined}
+            >
+              {l.label}
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</article>

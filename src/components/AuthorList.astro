@@ -1,0 +1,28 @@
+---
+import { isSelf, flipName } from "../lib/authors";
+
+interface Props {
+  authors: string[];
+}
+
+const { authors } = Astro.props;
+---
+
+<span class="text-sm muted leading-relaxed">
+  {
+    authors.map((a, i) => {
+      const display = flipName(a);
+      const last = i === authors.length - 1;
+      return (
+        <>
+          {isSelf(a) ? (
+            <strong class="text-[color:var(--fg)]">{display}</strong>
+          ) : (
+            <span>{display}</span>
+          )}
+          {!last && <span>, </span>}
+        </>
+      );
+    })
+  }
+</span>

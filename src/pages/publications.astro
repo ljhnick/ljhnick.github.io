@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PublicationCard from "../components/PublicationCard.astro";
+
+const all = await getCollection("publications");
+// Sort by year desc, then importance asc within year.
+all.sort((a, b) => {
+  if (b.data.year !== a.data.year) return b.data.year - a.data.year;
+  return a.data.importance - b.data.importance;
+});
+
+const byYear = new Map<number, typeof all>();
+for (const p of all) {
+  const arr = byYear.get(p.data.year) ?? [];
+  arr.push(p);
+  byYear.set(p.data.year, arr);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+
+<BaseLayout title="publications">
+  <h1 class="text-xl font-medium mb-8 text-[color:var(--fg)]">Publications</h1>
+
+  {
+    years.map((year) => (
+      <section class="mb-8">
+        <h2 class="text-xs muted uppercase tracking-wider mb-1">{year}</h2>
+        <div>
+          {byYear.get(year)!.map((pub) => (
+            <PublicationCard pub={pub} />
+          ))}
+        </div>
+      </section>
+    ))
+  }
+</BaseLayout>

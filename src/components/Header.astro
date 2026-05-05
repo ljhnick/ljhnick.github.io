@@ -1,0 +1,39 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const links = [
+  { href: "/", label: "about" },
+  { href: "/publications", label: "publications" },
+];
+---
+
+<header>
+  <nav
+    class="mx-auto max-w-prose px-5 pt-8 pb-2 flex items-center justify-between gap-4 text-sm"
+  >
+    <ul class="flex items-center gap-5">
+      {
+        links.map((l) => {
+          const target = l.href.replace(/\/$/, "") || "/";
+          const active = pathname === target;
+          return (
+            <li>
+              <a
+                href={l.href}
+                class:list={[
+                  "muted hover:text-[color:var(--fg)]",
+                  active && "text-[color:var(--fg)]",
+                ]}
+              >
+                {l.label}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <ThemeToggle />
+  </nav>
+</header>

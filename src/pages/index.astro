@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Profile from "../components/Profile.astro";
+import PublicationCard from "../components/PublicationCard.astro";
+import { Content as About } from "../content/about.md";
+
+const allPubs = await getCollection("publications");
+const selected = allPubs
+  .filter((p) => p.data.selected)
+  .sort((a, b) => a.data.importance - b.data.importance);
+---
+
+<BaseLayout>
+  <Profile />
+
+  <section class="prose-bio mb-14">
+    <About />
+  </section>
+
+  <section>
+    <p class="text-sm muted mb-4 leading-relaxed">
+      During my Ph.D., I focused on HCI research. My research interest is
+      proactive assistance on egocentric wearables. Check out all my
+      publications <a href="/publications">here</a>.
+    </p>
+    <h2 class="text-xs muted uppercase tracking-wider mb-3">
+      Selected publications
+    </h2>
+    <div>
+      {selected.map((pub) => <PublicationCard pub={pub} />)}
+    </div>
+  </section>
+</BaseLayout>

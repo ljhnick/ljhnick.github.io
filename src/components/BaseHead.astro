@@ -1,0 +1,66 @@
+---
+import { SITE } from "../consts";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} · ${SITE.title}` : SITE.title;
+const pageDescription = description ?? SITE.description;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE.url).toString();
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{pageTitle}</title>
+<meta name="description" content={pageDescription} />
+<link rel="canonical" href={canonical} />
+
+<link rel="icon" type="image/jpeg" href="/assets/img/jia.jpg" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={pageDescription} />
+<meta property="og:url" content={canonical} />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={pageDescription} />
+
+{/* Avoid flash of unstyled theme: set class before hydration. */}
+<script is:inline>
+  (function () {
+    try {
+      const stored = localStorage.getItem("theme");
+      const prefers =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const dark = stored ? stored === "dark" : prefers;
+      if (dark) document.documentElement.classList.add("dark");
+    } catch (_) {}
+  })();
+</script>
+
+{
+  import.meta.env.PROD && SITE.gaId && (
+    <>
+      <script
+        is:inline
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${SITE.gaId}`}
+      />
+      <script
+        is:inline
+        set:html={`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${SITE.gaId}');`}
+      />
+    </>
+  )
+}
