@@ -2,7 +2,7 @@ export const SITE = {
   title: "Jiahao Nick Li",
   description:
     "Jiahao Nick Li — HCI researcher and founding engineer at Altar. Research on Human-AI Interaction and Wearable AI Assistance.",
-  url: "https://ljhnick.github.io",
+  url: "https://jiahaoli.net",
   author: "Jiahao Nick Li",
   email: "jiahaoli@physionlabs.ai",
   scholar: "https://scholar.google.com/citations?user=NktGUFUAAAAJ&hl=en",
