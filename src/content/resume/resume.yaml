@@ -1,0 +1,68 @@
+# ============================================================
+#  Your resume — edit everything here. Nothing is auto-pulled.
+#  Renders at /resume. Use **double asterisks** for bold.
+#
+#  Each section has a `title` plus ONE of:
+#    text:    one paragraph
+#    entries: rows of org / title / date / detail
+#    items:   a list of lines (e.g. publications)
+#  Reorder, rename, add or delete sections freely.
+# ============================================================
+
+name: Jiahao Nick Li
+role: "Member of Technical Staff, Physion Labs"
+
+contacts:
+  - { label: "jiahaoli@physionlabs.ai", href: "mailto:jiahaoli@physionlabs.ai" }
+  - { label: "jiahaoli.net", href: "https://jiahaoli.net" }
+  - { label: "Scholar", href: "https://scholar.google.com/citations?user=NktGUFUAAAAJ&hl=en" }
+  - { label: "GitHub", href: "https://github.com/ljhnick" }
+
+sections:
+  - title: About
+    text: >-
+      I lead engineering and infrastructure at Physion Labs, where we build critics for world models (see our recent [blog posts](https://physionlabs.ai/blog)). I now focus mainly on efficient training and inference, with earlier experience building agents.
+
+  - title: Experience
+    entries:
+      - org: "Physion Labs"
+        title: "Founding Member of Technical Staff"
+        date: "2026 Apr – Present"
+        bullets:
+          - "Engineering lead for the **Galileo** series of world-critic models (training/inference/data infra)."
+
+      - org: "Altar"
+        title: "Founding Engineer"
+        date: "2025 Jan – 2026 Apr"
+        bullets:
+          - "Built and own **Altards**, a general-purpose internal agent with company-wide context, from analyzing user data to handle linear tickets and create PRs (an early, internally-adopted analog to [Claude Tag](https://www.anthropic.com/news/introducing-claude-tag))."
+          - "Engineering and ML lead for our agent products, including a creativity-support agent and a live meeting assistant."
+
+      - org: "Apple"
+        title: "Software Engineer"
+        date: "2024 Jul – 2025 Jan"
+        bullets:
+          - "Internal tooling for machine learning workflows"
+
+      - org: "Meta Reality Labs"
+        title: "Research Scientist Intern"
+        date: "2022 Dec – 2023 Apr"
+        bullets:
+          - "Research on a wearable AI agent for proactive suggestions ([OmniActions](https://dl.acm.org/doi/10.1145/3613904.3642068), CHI 2024)."
+
+  - title: Education
+    entries:
+      - org: "University of California, Los Angeles"
+        title: "Ph.D."
+        date: "2018 – 2024"
+        detail: "Human–Computer Interaction. Advised by [Dr. Xiang “Anthony” Chen](https://hci.prof/)."
+      - org: "Shanghai Jiao Tong University"
+        title: "B.E."
+        date: "2013 – 2017"
+        detail: "Naval Architecture and Ocean Engineering"
+
+  - title: Selected Publications
+    items:
+      - "**Jiahao Nick Li**, Zhuohao (Jerry) Zhang, Jiaju Ma. OmniQuery: Contextually Augmenting Captured Multimodal Memories to Enable Personal Question Answering. CHI 2025."
+      - "**Jiahao Nick Li**, Yan Xu, Tovi Grossman, Stephanie Santosa, Michelle Li. OmniActions: Predicting Digital Actions in Response to Real-World Multimodal Sensory Inputs with LLMs. CHI 2024."
+    link: { label: "See all publications →", href: "https://jiahaoli.net/publications" }

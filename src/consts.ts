@@ -6,7 +6,7 @@ export const SITE = {
   author: "Jiahao Nick Li",
   email: "jiahaoli@physionlabs.ai",
   scholar: "https://scholar.google.com/citations?user=NktGUFUAAAAJ&hl=en",
-  cvPdf: "/assets/pdf/resume.pdf",
+  cvPdf: "/resume",
   gaId: "G-X8LTNRG2GY",
 };
 
